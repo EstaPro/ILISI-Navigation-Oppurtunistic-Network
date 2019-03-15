@@ -1,0 +1,4 @@
+[0m[[0m[31merror[0m] [0m[0mC:\Users\BAROUCH_SHIP\Desktop\Authentification-Silhouette\app\controllers\SignUpController.scala:112:15: not found: value mailer[0m
+[0m[[0m[31merror[0m] [0m[0m              mailer.[0m
+[0m[[0m[31merror[0m] [0m[0m              ^[0m
+[0m[[0m[31merror[0m] [0m[0mone error found[0m
