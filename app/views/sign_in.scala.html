@@ -1,0 +1,202 @@
+@import play.api.data.Form
+@import play.api.i18n.Messages
+@import play.api.mvc.RequestHeader
+@import org.webjars.play.WebJarsUtil
+@import controllers.AssetsFinder
+@import com.mohiva.play.silhouette.impl.providers.SocialProviderRegistry
+@import forms.SignInForm.Data
+
+@(signInForm: Form[Data], socialProviders: SocialProviderRegistry)(implicit request: RequestHeader, messages: Messages, webJarsUtil: WebJarsUtil, assets: AssetsFinder)
+
+@implicitFieldConstructor = @{ b3.vertical.fieldConstructor() }
+
+<!DOCTYPE html>
+
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <link href="@assets.path("assets/fonts/font-awesome.css")" rel="stylesheet" type="text/css">
+    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="@assets.path("assets/bootstrap/css/bootstrap.css")" type="text/css">
+    <link rel="stylesheet" href="@assets.path("assets/css/bootstrap-select.min.css")" type="text/css">
+    <link rel="stylesheet" href="@assets.path("assets/css/style.css")" type="text/css">
+    <link rel="stylesheet" href="@assets.path("assets/css/user.style.css")" type="text/css">
+
+    <title>Spotter</title>
+
+</head>
+
+<body onunload="" class="page-subpage page-sign-in navigation-off-canvas" id="page-top">
+
+<!-- Outer Wrapper-->
+<div id="outer-wrapper">
+    <!-- Inner Wrapper -->
+    <div id="inner-wrapper">
+        <!-- Navigation-->
+        <div class="header">
+            <div class="wrapper">
+                <div class="brand">
+                    <a href="index-directory.html"><img src="@assets.path("assets/img/logo.png")" alt="logo"></a>
+                </div>
+                <nav class="navigation-items">
+                    <div class="wrapper">
+                        <ul class="main-navigation navigation-top-header"></ul>
+                        <ul class="user-area">
+                            <li><a href="@controllers.routes.SignInController.view">Sign In</a></li>
+                            <li><a href="@controllers.routes.SignUpController.view"><strong>Register</strong></a></li>
+                        </ul>
+                        <a href="#" class="submit-item">
+                            <div class="content"><span>Submit Your Item</span></div>
+                            <div class="icon">
+                                <i class="fa fa-plus"></i>
+                            </div>
+                        </a>
+                        <div class="toggle-navigation">
+                            <div class="icon">
+                                <div class="line"></div>
+                                <div class="line"></div>
+                                <div class="line"></div>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <!-- end Navigation-->
+        <!-- Page Canvas-->
+        <div id="page-canvas">
+            <!--Off Canvas Navigation-->
+            <nav class="off-canvas-navigation">
+                <header>Navigation</header>
+                <div class="main-navigation navigation-off-canvas"></div>
+            </nav>
+            <!--end Off Canvas Navigation-->
+
+            <!--Sub Header-->
+            <section class="sub-header">
+                <div class="search-bar horizontal collapse" id="redefine-search-form"></div>
+                <!-- /.search-bar -->
+                <div class="breadcrumb-wrapper">
+                    <div class="container">
+                       
+                        <ol class="breadcrumb">
+                            <li><a href="#"><i class="fa fa-home"></i></a></li>
+                            <li><a href="#">Page</a></li>
+                            <li class="active">Detail</li>
+                        </ol>
+                        <!-- /.breadcrumb-->
+                    </div>
+                    <!-- /.container-->
+                </div>
+                <!-- /.breadcrumb-wrapper-->
+            </section>
+            <!--end Sub Header-->
+
+            <!--Page Content-->
+            <div id="page-content">
+                <section class="container">
+                    <div class="block">
+                            @request.flash.get("error").map { msg =>
+                                <div class="col-md-6 col-md-offset-3 alert alert-danger">
+                                    <a href="#" class="close" data-dismiss="alert">&times;</a>
+                                    <strong>@messages("error")</strong> @msg
+                                </div>
+                            }
+                            @request.flash.get("info").map { msg =>
+                                <div class="col-md-6 col-md-offset-3 alert alert-info">
+                                    <a href="#" class="close" data-dismiss="alert">&times;</a>
+                                    <strong>@messages("info")</strong> @msg
+                                </div>
+                            }
+                            @request.flash.get("success").map { msg =>
+                                <div class="col-md-6 col-md-offset-3 alert alert-success">
+                                    <a href="#" class="close" data-dismiss="alert">&times;</a>
+                                    <strong>@messages("success")</strong> @msg
+                                </div>
+                            }
+                            
+                        <div class="row">
+                            <div class="col-md-4 col-sm-6 col-md-offset-4 col-sm-offset-3">
+                                <header>
+                                <h1 class="page-title">@messages("sign.in.credentials")</h1>
+                                </header>
+                                <hr>
+                                @helper.form(action = controllers.routes.SignInController.submit()) {
+                                    @helper.CSRF.formField
+                                    <label for="form-sign-in-email">Email:</label>
+                                    @b3.email(
+                                        signInForm("email"), 
+                                        '_hiddenLabel -> messages("email"),
+                                        'type -> "email",
+                                        'class -> "form-control",
+                                        'name -> "form-sign-in-email",
+                                        'id -> "form-sign-in-email",
+                                        'required -> true
+                                    )
+                                    <label for="form-sign-in-email">Password:</label>
+                                    @b3.password(
+                                        signInForm("password"), 
+                                        '_hiddenLabel -> messages("password"),
+                                        'type -> "password",
+                                        'class -> "form-control",
+                                        'name -> "form-sign-in-password",
+                                        'id -> "form-sign-in-password",
+                                        'required -> true
+                                    )
+                                    @b3.checkbox(signInForm("rememberMe"), '_text -> messages("remember.me"), 'checked -> true)
+
+                                    <div class="form-group clearfix">
+                                        <div>
+                                            <button id="submit" type="submit" class="btn pull-right btn-default">@messages("sign.in")</button>
+                                        </div>
+                                    </div>
+                                }
+
+                                <div>
+                                        <p class="not-a-member">@messages("not.a.member") <a href="@controllers.routes.SignUpController.view">@messages("sign.up.now")</a> | <a href="@controllers.routes.ForgotPasswordController.view()" title="@messages("forgot.your.password")">@messages("forgot.your.password")</a></p>
+                                </div>
+
+                                @if(socialProviders.providers.nonEmpty) {
+                                    <div class="social-providers">
+                                        <p>@messages("or.use.social")</p>
+                                        <div>
+                                        @for(p <- socialProviders.providers) {
+                                            <a href="@controllers.routes.SocialAuthController.authenticate(p.id)" class="provider @p.id" title="@messages(p.id)"><img src="@assets.path(s"images/providers/${p.id}.png")" width="64px" height="64px" alt="@messages(p.id)"></a>
+                                        }
+                                        </div>
+                                    </div>
+                                }
+
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- /.block-->
+            </div>
+            <!-- end Page Content-->
+        </div>
+        <!-- end Page Canvas-->
+      
+    </div>
+    <!-- end Inner Wrapper -->
+</div>
+<!-- end Outer Wrapper-->
+
+
+<script type="text/javascript" src="@assets.path("assets/js/jquery-2.1.0.min.js")"></script>
+<script type="text/javascript" src="@assets.path("assets/js/before.load.js")"></script>
+<script type="text/javascript" src="@assets.path("assets/js/jquery-migrate-1.2.1.min.js")"></script>
+<script type="text/javascript" src="@assets.path("assets/bootstrap/js/bootstrap.min.js")"></script>
+<script type="text/javascript" src="@assets.path("assets/js/smoothscroll.js")"></script>
+<script type="text/javascript" src="@assets.path("assets/js/bootstrap-select.min.js")"></script>
+<script type="text/javascript" src="@assets.path("assets/js/jquery.hotkeys.js")"></script>
+<script type="text/javascript" src="@assets.path("assets/js/custom.js")"></script>
+
+<!--[if lte IE 9]>
+<script type="text/javascript" src="assets/js/ie-scripts.js"></script>
+<![endif]-->
+</body>
+</html>
