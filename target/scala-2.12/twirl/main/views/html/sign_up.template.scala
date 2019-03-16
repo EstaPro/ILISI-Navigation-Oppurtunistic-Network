@@ -109,7 +109,25 @@ Seq[Any](format.raw/*8.127*/("""
             <div id="page-content">
                 <section class="container">
                     <div class="block">
-                        <div class="row">
+                        """),_display_(/*101.26*/request/*101.33*/.flash.get("error").map/*101.56*/ { msg =>_display_(Seq[Any](format.raw/*101.65*/("""
+                            """),format.raw/*102.29*/("""<div class="col-md-6 col-md-offset-3 alert alert-danger">
+                                <a href="#" class="close" data-dismiss="alert">&times;</a>
+                                <strong>"""),_display_(/*104.42*/messages("error")),format.raw/*104.59*/("""</strong> """),_display_(/*104.70*/msg),format.raw/*104.73*/("""
+                            """),format.raw/*105.29*/("""</div>
+                        """)))}),format.raw/*106.26*/("""
+                        """),_display_(/*107.26*/request/*107.33*/.flash.get("info").map/*107.55*/ { msg =>_display_(Seq[Any](format.raw/*107.64*/("""
+                            """),format.raw/*108.29*/("""<div class="col-md-6 col-md-offset-3 alert alert-info">
+                                <a href="#" class="close" data-dismiss="alert">&times;</a>
+                                <strong>"""),_display_(/*110.42*/messages("info")),format.raw/*110.58*/("""</strong> """),_display_(/*110.69*/msg),format.raw/*110.72*/("""
+                            """),format.raw/*111.29*/("""</div>
+                        """)))}),format.raw/*112.26*/("""
+                        """),_display_(/*113.26*/request/*113.33*/.flash.get("success").map/*113.58*/ { msg =>_display_(Seq[Any](format.raw/*113.67*/("""
+                            """),format.raw/*114.29*/("""<div class="col-md-6 col-md-offset-3 alert alert-success">
+                                <a href="#" class="close" data-dismiss="alert">&times;</a>
+                                <strong>"""),_display_(/*116.42*/messages("success")),format.raw/*116.61*/("""</strong> """),_display_(/*116.72*/msg),format.raw/*116.75*/("""
+                            """),format.raw/*117.29*/("""</div>
+                        """)))}),format.raw/*118.26*/("""
+                        """),format.raw/*119.25*/("""<div class="row">
                             <div class="col-md-4 col-sm-6 col-md-offset-4 col-sm-offset-3">
                                 <header>
                                     <h1 class="page-title">Register</h1>
@@ -136,35 +154,35 @@ Seq[Any](format.raw/*8.127*/("""
                                         <button type="submit" class="btn pull-right btn-default" id="account-submit">Create an Account</button>
                                     </div><!-- /.form-group --
                                 </form> -->
-                                """),_display_(/*128.34*/helper/*128.40*/.form(action = controllers.routes.SignUpController.submit())/*128.100*/ {_display_(Seq[Any](format.raw/*128.102*/("""
-                                    """),_display_(/*129.38*/helper/*129.44*/.CSRF.formField),format.raw/*129.59*/("""
-                                    """),format.raw/*130.37*/("""<div class="form-group">
+                                """),_display_(/*146.34*/helper/*146.40*/.form(action = controllers.routes.SignUpController.submit())/*146.100*/ {_display_(Seq[Any](format.raw/*146.102*/("""
+                                    """),_display_(/*147.38*/helper/*147.44*/.CSRF.formField),format.raw/*147.59*/("""
+                                    """),format.raw/*148.37*/("""<div class="form-group">
                                         <label for="form-register-full-name">First Name :</label>
-                                        """),_display_(/*132.42*/b3/*132.44*/.text(signUpForm("firstName"), '_hiddenLabel -> messages("first.name"), 'class -> "form-control")),format.raw/*132.141*/("""
-                                    """),format.raw/*133.37*/("""</div><!-- /.form-group -->
+                                        """),_display_(/*150.42*/b3/*150.44*/.text(signUpForm("firstName"), '_hiddenLabel -> messages("first.name"), 'class -> "form-control")),format.raw/*150.141*/("""
+                                    """),format.raw/*151.37*/("""</div><!-- /.form-group -->
                                     <div class="form-group">
                                         <label for="form-register-full-name">Last Name :</label>
-                                        """),_display_(/*136.42*/b3/*136.44*/.text(signUpForm("lastName"), '_hiddenLabel -> messages("last.name"), 'class -> "form-control")),format.raw/*136.139*/("""
-                                    """),format.raw/*137.37*/("""</div><!-- /.form-group -->
+                                        """),_display_(/*154.42*/b3/*154.44*/.text(signUpForm("lastName"), '_hiddenLabel -> messages("last.name"), 'class -> "form-control")),format.raw/*154.139*/("""
+                                    """),format.raw/*155.37*/("""</div><!-- /.form-group -->
                                     <div class="form-group">
                                         <label for="form-register-full-name">Email :</label>
-                                        """),_display_(/*140.42*/b3/*140.44*/.text(signUpForm("email"), '_hiddenLabel -> messages("email"), 'class -> "form-control")),format.raw/*140.132*/("""
-                                    """),format.raw/*141.37*/("""</div><!-- /.form-group -->
+                                        """),_display_(/*158.42*/b3/*158.44*/.text(signUpForm("email"), '_hiddenLabel -> messages("email"), 'class -> "form-control")),format.raw/*158.132*/("""
+                                    """),format.raw/*159.37*/("""</div><!-- /.form-group -->
                                     <div class="form-group">
                                         <label for="form-register-full-name">Password :</label>
-                                        """),_display_(/*144.42*/b3/*144.44*/.text(signUpForm("password"), '_hiddenLabel -> messages("password"), 'class -> "form-control")),format.raw/*144.138*/("""
-                                    """),format.raw/*145.37*/("""</div><!-- /.form-group -->
+                                        """),_display_(/*162.42*/b3/*162.44*/.text(signUpForm("password"), '_hiddenLabel -> messages("password"), 'class -> "form-control")),format.raw/*162.138*/("""
+                                    """),format.raw/*163.37*/("""</div><!-- /.form-group -->
                                     <div class="form-group clearfix">
                                             <button type="submit" value="submit" class="btn pull-right btn-default" id="submit">Create an Account</button>
                                     </div><!-- /.form-group -->
 
                                     <div class="sign-in-now">
-                                        <p>"""),_display_(/*151.45*/messages("already.a.member")),format.raw/*151.73*/(""" """),format.raw/*151.74*/("""<a href=""""),_display_(/*151.84*/controllers/*151.95*/.routes.SignInController.view),format.raw/*151.124*/("""">"""),_display_(/*151.127*/messages("sign.in.now")),format.raw/*151.150*/("""</a></p>
+                                        <p>"""),_display_(/*169.45*/messages("already.a.member")),format.raw/*169.73*/(""" """),format.raw/*169.74*/("""<a href=""""),_display_(/*169.84*/controllers/*169.95*/.routes.SignInController.view),format.raw/*169.124*/("""">"""),_display_(/*169.127*/messages("sign.in.now")),format.raw/*169.150*/("""</a></p>
                                     </div>
-                                """)))}),format.raw/*153.34*/("""
-                                """),format.raw/*154.33*/("""<hr>
+                                """)))}),format.raw/*171.34*/("""
+                                """),format.raw/*172.33*/("""<hr>
                                 <div class="center">
-                                    <figure class="note">By clicking the “Create an Account” button you agree with our <a href="terms-conditions.html" class="link">Terms and conditions</a></figure>
+                                    <figure class="note">By clicking the “Create an Account” button you agree with our <a href="" class="link">Terms and conditions</a></figure>
                                 </div>
                             </div>
                         </div>
@@ -211,11 +229,11 @@ Seq[Any](format.raw/*8.127*/("""
 
               /*
                   -- GENERATED --
-                  DATE: Sat Mar 16 02:52:40 CET 2019
+                  DATE: Sat Mar 16 03:18:48 CET 2019
                   SOURCE: C:/Users/BAROUCH_SHIP/Desktop/Authentification-Silhouette/app/views/sign_up.scala.html
-                  HASH: 0aab80a151adaf243484418ced5c108d20e7fb44
-                  MATRIX: 28->1|61->29|98->61|139->97|182->135|221->169|608->202|821->332|854->356|923->327|955->394|986->398|1187->572|1202->578|1261->616|1469->797|1484->803|1548->846|1629->900|1644->906|1709->950|1790->1004|1805->1010|1855->1039|1936->1093|1951->1099|2006->1133|2469->1569|2484->1575|2533->1603|2865->1908|2885->1919|2935->1948|3024->2010|3044->2021|3094->2050|7617->6545|7633->6551|7704->6611|7746->6613|7813->6652|7829->6658|7866->6673|7933->6711|8127->6877|8139->6879|8259->6976|8326->7014|8584->7244|8596->7246|8714->7341|8781->7379|9035->7605|9047->7607|9158->7695|9225->7733|9482->7962|9494->7964|9611->8058|9678->8096|10136->8526|10186->8554|10216->8555|10254->8565|10275->8576|10327->8605|10359->8608|10405->8631|10524->8718|10587->8752
-                  LINES: 4->1|5->2|6->3|7->4|8->5|9->6|14->8|18->10|18->10|19->8|21->10|23->12|31->20|31->20|31->20|33->22|33->22|33->22|34->23|34->23|34->23|35->24|35->24|35->24|36->25|36->25|36->25|52->41|52->41|52->41|58->47|58->47|58->47|59->48|59->48|59->48|139->128|139->128|139->128|139->128|140->129|140->129|140->129|141->130|143->132|143->132|143->132|144->133|147->136|147->136|147->136|148->137|151->140|151->140|151->140|152->141|155->144|155->144|155->144|156->145|162->151|162->151|162->151|162->151|162->151|162->151|162->151|162->151|164->153|165->154
+                  HASH: 4687f82420c5dac4667beebb852282d8cf9f914f
+                  MATRIX: 28->1|61->29|98->61|139->97|182->135|221->169|608->202|821->332|854->356|923->327|955->394|986->398|1187->572|1202->578|1261->616|1469->797|1484->803|1548->846|1629->900|1644->906|1709->950|1790->1004|1805->1010|1855->1039|1936->1093|1951->1099|2006->1133|2469->1569|2484->1575|2533->1603|2865->1908|2885->1919|2935->1948|3024->2010|3044->2021|3094->2050|5337->4265|5354->4272|5387->4295|5435->4304|5494->4334|5714->4526|5753->4543|5792->4554|5817->4557|5876->4587|5941->4620|5996->4647|6013->4654|6045->4676|6093->4685|6152->4715|6370->4905|6408->4921|6447->4932|6472->4935|6531->4965|6596->4998|6651->5025|6668->5032|6703->5057|6751->5066|6810->5096|7031->5289|7072->5308|7111->5319|7136->5322|7195->5352|7260->5385|7315->5411|9624->7692|9640->7698|9711->7758|9753->7760|9820->7799|9836->7805|9873->7820|9940->7858|10134->8024|10146->8026|10266->8123|10333->8161|10591->8391|10603->8393|10721->8488|10788->8526|11042->8752|11054->8754|11165->8842|11232->8880|11489->9109|11501->9111|11618->9205|11685->9243|12143->9673|12193->9701|12223->9702|12261->9712|12282->9723|12334->9752|12366->9755|12412->9778|12531->9865|12594->9899
+                  LINES: 4->1|5->2|6->3|7->4|8->5|9->6|14->8|18->10|18->10|19->8|21->10|23->12|31->20|31->20|31->20|33->22|33->22|33->22|34->23|34->23|34->23|35->24|35->24|35->24|36->25|36->25|36->25|52->41|52->41|52->41|58->47|58->47|58->47|59->48|59->48|59->48|112->101|112->101|112->101|112->101|113->102|115->104|115->104|115->104|115->104|116->105|117->106|118->107|118->107|118->107|118->107|119->108|121->110|121->110|121->110|121->110|122->111|123->112|124->113|124->113|124->113|124->113|125->114|127->116|127->116|127->116|127->116|128->117|129->118|130->119|157->146|157->146|157->146|157->146|158->147|158->147|158->147|159->148|161->150|161->150|161->150|162->151|165->154|165->154|165->154|166->155|169->158|169->158|169->158|170->159|173->162|173->162|173->162|174->163|180->169|180->169|180->169|180->169|180->169|180->169|180->169|180->169|182->171|183->172
                   -- GENERATED --
               */
           
